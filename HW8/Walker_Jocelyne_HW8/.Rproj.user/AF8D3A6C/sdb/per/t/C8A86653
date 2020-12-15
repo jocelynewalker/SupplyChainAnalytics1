@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "library(fpp)\nlibrary(dplyr)\nload(\"ChinaElectricity.RData\")\n\nCH.tr <-window(CH, end=2006)\nCH.te <-window(CH, start=2007, end=2013)\n\n# Question 1\nmodel1 <- ets(CH.tr, model = \"ZZZ\", restrict = FALSE, lambda = 0)\nsummary(model1)\ntsdiag(model1)\nforecast1 <- forecast(model1, h=7)\nplot(forecast1)\nlines(CH.te, col = \"red\")\naccuracy(forecast1, CH.te)\n\n# Question 2\nadf.test(log(CH.tr), alternative = \"stationary\") # p-value 0.1913\nadf.test(diff(log(CH.tr)), alternative = \"stationary\") # p-value 0.08678\nadf.test(diff(diff(log(CH.tr))), alternative = \"stationary\") # p-value 0.03046\n\n# Question 3\nstationary.series <- diff(diff(log(CH.tr)))\ntsdisplay(stationary.series)\n\n# Question 4\nmodel2 <- auto.arima(CH.tr, lambda = 0)\nsummary(model2)\ntsdiag(model2)\nforecast2 <- forecast(model2, h=7)\nplot(forecast2)\nlines(CH.te, col = \"red\")\naccuracy(forecast2, CH.te)\n\n# Question 5\nfull.model <- Arima(CH, order = c(1,1,0), include.drift = TRUE, lambda = 0)\nsummary(full.model)\ntsdiag(full.model)\nforecast3 <- forecast(full.model, h=7)\nplot(forecast3)\nsummary(forecast3)\n\n# Question 8\nView(CH)\n1.2523*5436.6 - .2523*4984.7\n5932.503 - 5550.614\n\n1.2523*5932.503 - .2523*5436.6\n6474.476-6057.619\n\n1.2523*6474.476 - .2523*5932.503\n7066.192 - 6611.216\n",
+    "created" : 1509394397286.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3704801230",
+    "id" : "C8A86653",
+    "lastKnownWriteTime" : 1509395320,
+    "last_content_update" : 1509395320652,
+    "path" : "C:/Users/jocel/OneDrive/Fall 2017/OM337_scanalytics/HW8/Walker_Jocelyne_HW8/Walker_Jocelyne_HW8.R",
+    "project_path" : "Walker_Jocelyne_HW8.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

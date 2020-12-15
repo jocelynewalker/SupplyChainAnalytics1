@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "\nSD.p <- sqrt(.54*(1-.54)/300)\nSD.p\n180/300\nts.z <- (.6 - .54)/SD.p\nts.z\n.21*200\n\nci.prop <- function(k, n, conf.level=0.95) {  \n  critical.value <- qnorm(1 - (1 - conf.level) / 2)  \n  p.hat <- k / n  \n  standard.error <- sqrt(p.hat * (1 - p.hat) / n)  \n  margin.of.error <- critical.value * standard.error  \n  return(p.hat + c(-margin.of.error, margin.of.error))  \n}\n.25*200\n.21*200\n.24*250\n\nci.prop(60,250,.90)\n\n\nSD.p <- sqrt(.5*(1-.5)/50)\nSD.p\n34/50\nts.z <- (.68 - .5)/SD.p\nts.z\n1- pnorm(ts.z)\n.31*2692\nci.prop(834.52,2692,.95)\n58/418\nSD.p <- sqrt(.08*(1-.08)/418)\nts.z <- (.138756 - .08)/SD.p \nts.z\npnorm(ts.z)\n\nztest.p <- function(k,n,p0) {  \n  p.hat <- k/n  \n  SD <- sqrt(p0*(1-p0)/n)  \n  ts.z <- (p.hat - p0)/SD  \n  p.val.lower <- pnorm(ts.z)  \n  p.val.upper <- 1-pnorm(ts.z)   \n  list(test.statistic=ts.z,  \n       p.val.lower=p.val.lower,  \n       p.val.upper=p.val.upper,  \n       p.val.two=min(2*p.val.upper,2*p.val.lower)  \n  )  \n}\n8092*.37\nztest.p(2994.04, 8092,.36)\n412/800\nci.prop(412, 800, .95)\n20*.38\n\n\nztest.p(152,500,.25)\n.22*123\nztest.p(27.06, 123,.26)\nztest.p(21, 25,.46)\n",
+    "created" : 1507324624901.000,
+    "dirty" : true,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "3336999371",
+    "id" : "53D420F5",
+    "lastKnownWriteTime" : 3419473789575321445,
+    "last_content_update" : 1507327326743,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
